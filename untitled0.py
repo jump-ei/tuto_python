@@ -168,3 +168,211 @@ Second line."""
 #実行結果を書くこともできる
 )
 
+
+#3/9
+
+a,b=0,1    
+while a<10: 
+    print(a)
+    a,b=b,a+b
+    
+0
+1
+1
+2
+3
+5
+8
+
+i=256*256
+print('The value of i is ',i)
+#print関数では文字列は引用符なしで
+#要素の間に空白が入り書式が整えられる
+The value of i is  65536
+
+a,b=0,1
+while a<1000:
+    print(a,end=',')
+    a,b=b,a+b
+    #endを使うと、末尾の改行を出力しないようにしたり
+    #別の文字列を末尾に出力したりできる
+    
+0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
+
+x=int(input("Please enter an integer:"))
+if x<0:
+    x=0
+    print('Negative changed to zero')
+elif x==0:
+    print('Zero')
+elif x==1:
+    print('Single')
+else:print('More')
+
+Please enter an integer:1
+Single
+
+words=['cat','window','defenestrate'] 
+for w in words :    
+    print(w,len(w))
+    
+cat 3
+window 6
+defenestrate 12
+
+users = {'Hans':'active','Eleonore':'inactive','景太郎':'active'}
+for user , status in users.copy().items():
+    if status == 'inactive':
+        del users[user]
+
+
+active_users = {}
+for user , status in users.items():
+    if status == 'active':
+        active_users[user] = status
+        
+
+for i in range(5):
+    print(i)
+    
+0
+1
+2
+3
+4
+
+for i in range(5,10):
+    print(i)
+    
+5
+6
+7
+8
+9
+
+for i in range(0,10,3):
+    print(i) #他の増加量
+    
+0
+3
+6
+9
+
+for i in range(-10,-100,-30):
+    print(i) #負の増加量
+    
+-10
+-40
+-70
+
+a = ['Mary','had','a','little','lamb']
+for i in range(len(a)):
+    print(i,a[i])
+    
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
+
+print(range(10))
+range(0, 10)
+
+sum(range(4))
+Out[13]: 6
+
+list(range(4)) #rangeが返すのはリストではなくイテラブル
+Out[14]: [0, 1, 2, 3]
+
+for n in range(2,10):
+    for x in range(2,n):
+        if n % x == 0:
+            print(n,'equals',x,'*',n//x)
+            break            
+else: #elseの位置
+                print(n,'is a prime number')
+                
+4 equals 2 * 2
+6 equals 2 * 3
+8 equals 2 * 4
+9 equals 3 * 3
+9 is a prime number
+
+for n in range(2,10):
+    for x in range(2,n):
+        if n % x == 0:
+            print(n,'equals',x,'*',n//x)
+            break            
+    else:
+                print(n,'is a prime number')
+                
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+
+for num in range(2,10):
+    if num % 2 == 0:
+        print("Found an even number",num)
+        continue
+        print("Found an odd number",num)
+        
+Found an even number 2
+Found an even number 4
+Found an even number 6
+Found an even number 8
+
+for num in range(2,10):
+    if num % 2 == 0:
+        print("Found an even number",num)
+        continue
+    print("Found an odd number",num)
+    
+Found an even number 2
+Found an odd number 3
+Found an even number 4
+Found an odd number 5
+Found an even number 6
+Found an odd number 7
+Found an even number 8
+Found an odd number 9
+
+#continueはループの次のイテレーションを実行
+
+while True:
+    pass #文を書くことが要求されているが何もしない時に使う
+    
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_3940/2295348535.py", line 2, in <module>
+    pass #文を書くことが要求されているが何もしない時に使う
+
+KeyboardInterrupt
+
+
+class MyEmptyClass:
+    pass #最小のクラスを作る
+    
+
+def initlog(*args):
+    pass #仮置きにも使える
+    
+
+def fib(n):\
+#defは関数の定義を導く
+    a,b = 0,1
+    while a<n:
+        print(a,end=' ')
+        a,b = b,a+b
+    pass
+    
+
+fib(2000)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 
+
+
+    
