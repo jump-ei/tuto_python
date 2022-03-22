@@ -169,6 +169,8 @@ Second line."""
 )
 
 
+
+
 #3/9
 
 a,b=0,1    
@@ -375,4 +377,232 @@ fib(2000)
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 
 
 
-    
+
+
+#3/22
+
+    def ask_ok(prompt, retries=4, reminder='Please try again!'):
+        while True:
+            ok = input(prompt)
+            if ok in ('y','ye','yes'):
+                return True
+            if ok in ('n','no','nop','nope'):
+                return False
+            retries = retries-1
+            if retries < 0:
+                raise ValueError('invalid user response')
+                print(reminder)
+                
+
+    ask_ok('Do you really want to quit?')
+
+    Do you really want to quit?y
+    Out[2]: True
+
+    ask_ok('s')
+
+    sy
+    Out[3]: True
+
+    ask_ok('OK to overwrite the file?', 2)
+
+    OK to overwrite the file?nope
+    Out[4]: False
+
+    i=5
+
+    def f(arg=i):
+        print(arg)
+        #関数が定義された時点で、関数を定義している側のスコープで評価される
+        
+
+    i=6
+
+    f()
+    5
+
+    def f(a,L=[]):
+        L.append(a)
+        return L
+        
+
+    print(f(1))
+    [1]
+
+    print(f(2))
+    [1, 2]
+
+    print(f(3)) #関数に渡されている引数を累積
+    [1, 2, 3]
+
+    def f(a,L=None):
+        if L is None:
+            L=[]
+            L.append(a)
+            return L
+            #デフォルト値をき共有しない場合
+            #append(a)はリストの末尾にaを追加する
+            
+
+    print(f(1))
+    [1]
+
+    print(f(2))
+    [2]
+
+    def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):
+        print("-- This parrot wouldn't", action, end=' ')
+        print("if you put", voltage, "volts through it.")
+        print("-- Lovely plumage, the", type)
+        print("-- It's", state, "!")
+        
+
+    parrot('a thousand', state='pushing up the daisies') #キーワード引数（A＝Bみたいの）は位置引数の後
+    -- This parrot wouldn't voom if you put a thousand volts through it.
+    -- Lovely plumage, the Norwegian Blue
+    -- It's pushing up the daisies !
+
+    def cheeseshop(kind,*arguments,**keywords):
+        print("--Do you have any",kind,"?")
+        for arg in arguments :
+            print(arg)
+        print("-"*40)
+        for kw in keywords:
+            print(kw,":",keywords[kw])
+            
+
+    cheeseshop("Limburger","It's very runny sir","It's really runny",shopkeeper="Michael Palin",client="John Cleese",sketch="Cheese Shop Sketch")
+    --Do you have any Limburger ?
+    It's very runny sir
+    It's really runny
+    ----------------------------------------
+    shopkeeper : Michael Palin
+    client : John Cleese
+    sketch : Cheese Shop Sketch
+
+    def pos_only_arg(arg, /):
+         print(arg)
+         
+
+    pos_only_arg(arg=1) #/の前は位置引数
+    Traceback (most recent call last):
+
+      File "C:\Users\81906\AppData\Local\Temp/ipykernel_14504/4088751949.py", line 1, in <module>
+        pos_only_arg(arg=1) #/の前は位置引数
+
+    TypeError: pos_only_arg() got some positional-only arguments passed as keyword arguments: 'arg'
+
+
+    def kwd_only_arg(*, arg):
+        print(arg)
+        
+
+    kwd_only_arg(arg=3) #*の直後はキーワード引数
+    3
+
+    def combined_example(pos_only, /, standard, *, kwd_only):
+        print(pos_only, standard, kwd_only)
+        
+
+    combined_example(1, standard=2, kwd_only=3)
+    1 2 3
+
+    def foo(name, **kwds):
+        return 'name' in kwds
+        
+
+    foo(1, **{'name': 2})
+    Traceback (most recent call last):
+
+      File "C:\Users\81906\AppData\Local\Temp/ipykernel_14504/396501844.py", line 1, in <module>
+        foo(1, **{'name': 2})
+
+    TypeError: foo() got multiple values for argument 'name'
+
+
+    def foo(name, /, **kwds):
+        return 'name' in kwds
+        
+
+    foo(1, **{'name': 2})
+    Out[29]: True
+
+    #位置専用引数にするとその名前を**kwdsの中で使用しても、曖昧にならない
+
+    def concat(*args,sep="/"):
+        return sep.join(args)
+        
+
+    concat("earth","mars","venus")
+    Out[32]: 'earth/mars/venus'
+
+    #'\n'.joinだと改行しながら結合される
+
+    concat("earth","mars","venus",sep=".")
+    Out[34]: 'earth.mars.venus'
+
+    list(range(3, 6))
+    Out[35]: [3, 4, 5]
+
+    args = [3, 6]
+
+    list(range(*args))
+    Out[37]: [3, 4, 5]
+
+    def parrot(voltage,state='a stiff',action='voom'):
+        print("-- This parrot wouldn't",action,end=' ')
+        print("if you put",voltage,"volts through it.",end='')
+        print("E's",state,"!")
+        
+
+    d={"voltage":"four million","state":"bleedin'demised","action":"VOOM"}
+
+    parrot(**d)
+    -- This parrot wouldn't VOOM if you put four million volts through it.E's bleedin'demised !
+
+    #*や**でアンパックできる
+
+    def make_incrementor(n):
+        return lambda x:x+n
+        #lambda 変数:式　で関数を作れる
+        
+
+    f=make_incrementor(42)
+
+    f(0)
+    Out[44]: 42
+
+    f(1)
+    Out[45]: 43
+
+    pairs=[(1,'one'),(2,'two'),(3,'three'),(4,'four')]
+
+    pairs.sort(key=lambda pair: pair[1])
+
+    pairs #list.sort(key=f)ではfの値が小さいものから並べられる　今回は辞書順
+    Out[48]: [(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
+
+    def my_function():
+        """D.
+
+        N.
+        """
+        pass
+        
+
+    print(my_function.__doc__)
+    D.
+
+        N.
+        
+
+    def f(ham:str,eggs:str='eggs')->str:
+        print("Annotations:",f.__annotations__)
+        print("Annotations:",ham,eggs)
+        return ham + 'and' + eggs
+        
+
+    f('spam')
+    Annotations: {'ham': <class 'str'>, 'eggs': <class 'str'>, 'return': <class 'str'>}
+    Annotations: spam eggs
+    Out[52]: 'spamandeggs'
