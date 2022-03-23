@@ -606,3 +606,168 @@ fib(2000)
     Annotations: {'ham': <class 'str'>, 'eggs': <class 'str'>, 'return': <class 'str'>}
     Annotations: spam eggs
     Out[52]: 'spamandeggs'
+    
+    
+    
+    
+    #3/23
+    
+    fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+
+    fruits.count('apple')
+    Out[2]: 2
+
+    fruits.index('banana')
+    Out[3]: 3
+
+    fruits.index('banana',4) #4の次のバナナ
+    Out[4]: 6
+
+    fruits.reverse()
+
+    fruits
+    Out[6]: ['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange']
+
+    fruits.sort()
+
+    fruits
+    Out[8]: ['apple', 'apple', 'banana', 'banana', 'kiwi', 'orange', 'pear']
+
+    fruits.pop()#popは指定しなければ末尾を削除して返す
+    Out[9]: 'pear'
+
+    stack = [3, 4, 5]  #スタック（stack）はデータの並びが1次元的で、しかもデータアクセスにLIFO（Last-In First-Out）の制約がついたデータ構造.コマンドによってリストをスタックとして使える.
+
+    stack.append(6)
+
+    stack.append(7)
+
+    stack
+    Out[13]: [3, 4, 5, 6, 7]
+
+    stack.pop()
+    Out[14]: 7
+
+    stack
+    Out[15]: [3, 4, 5, 6]
+
+    stack.pop()
+    Out[16]: 6
+
+    stack.pop()
+    Out[17]: 5
+
+    stack
+    Out[18]: [3, 4]
+
+    from collections import deque
+
+    queue = deque(["Eric", "John", "Michael"])
+
+    queue.append("Terry")
+
+    queue.append("Graham")
+
+    queue.popleft()
+    Out[23]: 'Eric'
+
+    queue.popleft()
+    Out[24]: 'John'
+
+    queue
+    Out[25]: deque(['Michael', 'Terry', 'Graham'])
+
+    squares = []
+
+    for x in range(10):
+        squares.append(x**2)
+        
+
+    squares #これだとxという変数を上書きしたりする
+    Out[28]: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+    squares = list(map(lambda x: x**2, range(10))) #mapはイテレータを返すのでlistでlistにする　,の右を順番に入れるっぽい
+
+    squares = [x**2 for x in range(10)]
+
+    [(x,y) for x in [1, 2, 3] for y in [3, 1, 4] if x != y] #リストの内包表記
+    Out[31]: [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+
+    combs = []
+
+    for x in [1, 2, 3]:
+        for y in [3, 1,4]:
+            if x != y:
+                combs.append((x, y))
+                
+
+    combs
+    Out[34]: [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+
+    vec = [-4, -2, 0, 2, 4]
+
+    [x*2 for x in vec]
+    Out[36]: [-8, -4, 0, 4, 8]
+
+    [x for x in vec if x >= 0]
+    Out[37]: [0, 2, 4]
+
+    [abs(x) for x in vec]
+    Out[38]: [4, 2, 0, 2, 4]
+
+    freshfruit = [' banana', ' loganberry', ' passion fruit']
+
+    freshfruit
+    Out[40]: [' banana', ' loganberry', ' passion fruit']
+
+    [weapon.strip() for weapon in freshfruit] #stripは空白を削除する
+    Out[41]: ['banana', 'loganberry', 'passion fruit']
+
+    [(x,x**2) for x in range(6)] #()が必要
+    Out[42]: [(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
+
+    vec = [[1, 2, 3],[4, 5, 6,],[7, 8, 9]]
+
+    [num for elem in vec for num in elem]
+    Out[44]: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    from math import pi
+
+    [str(round(pi, i)) for i in range(1,6)] #roundは右の桁数まで四捨五入する　strは数値を文字列に変換する
+    Out[46]: ['3.1', '3.14', '3.142', '3.1416', '3.14159']
+
+    matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    ]
+
+    [[a[i] for a in matrix] for i in range(4)] #aのところは一致してればなんでもよい
+    Out[48]: [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+
+    transposed = []
+
+    for i in range(4):
+        transposed.append([a[i] for a in matrix])
+        
+
+    transposed
+    Out[51]: [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+
+    for i in range(4):
+        transposed_row = []
+        for row in matrix:
+            transposed_row.append(row[i])
+        transposed.append(transposed_row)
+        
+
+    transposed
+    Out[53]: 
+    [[1, 5, 9],
+     [2, 6, 10],
+     [3, 7, 11],
+     [4, 8, 12],
+     [1, 5, 9],
+     [2, 6, 10],
+     [3, 7, 11],
+     [4, 8, 12]]
