@@ -771,3 +771,244 @@ fib(2000)
      [2, 6, 10],
      [3, 7, 11],
      [4, 8, 12]]
+    
+    
+    
+    #3/30
+    
+    matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    ]
+
+    list(zip(*matrix))\
+    #zipは入力したものから一つずつとってタプルを作る
+    Out[2]: [(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
+
+    list(zip(range(3), ['fee', 'fi', 'fo', 'fum']))
+    Out[3]: [(0, 'fee'), (1, 'fi'), (2, 'fo')]
+
+    a = [-1, 1, 66.25, 333, 333, 1234.5]
+
+    del a[0]\
+    #popと違い値を返さない
+
+    a
+    Out[6]: [1, 66.25, 333, 333, 1234.5]
+
+    del a[2:4]
+
+    a
+    Out[8]: [1, 66.25, 1234.5]
+
+    del a
+
+    #消えたのでaを入力するとエラーが出る
+
+    t = 12345, 54321, 'hello'
+
+    t[0]
+    Out[12]: 12345
+
+    t[0]=88888\
+    #tapleは不変
+    Traceback (most recent call last):
+
+      File "C:\Users\81906\AppData\Local\Temp/ipykernel_24296/1213624705.py", line 1, in <module>
+        t[0]=88888\
+
+    TypeError: 'tuple' object does not support item assignment
+
+
+    t
+    Out[14]: (12345, 54321, 'hello')
+
+    u = t, (1, 2, 3, 4, 5)
+
+    u
+    Out[16]: ((12345, 54321, 'hello'), (1, 2, 3, 4, 5))
+
+    v = ([1, 2, 3], [3, 2, 1])\
+    #可変なオブジェクトを含むことはできる
+
+    v
+    Out[18]: ([1, 2, 3], [3, 2, 1])
+
+    empty = ()\
+    #空のタプル
+
+    singleton = 'hello', \
+    #一つの項目からなるタプルはコンマが必要
+
+    len(empty)
+    Out[21]: 0
+
+    len(singleton)
+    Out[22]: 1
+
+    singleton
+    Out[23]: ('hello',)
+
+    x, y, z = t\
+    #シーケンスのアンパック
+
+    x
+    Out[25]: 12345
+
+    basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+
+    print(basket)
+    {'pear', 'orange', 'banana', 'apple'}
+
+    'orange' in basket
+    Out[28]: True
+
+    'crabgrass' in basket
+    Out[29]: False
+
+    a = set('abracadabra')\
+    #setというオブジェクトができ、可変
+
+    b = set('alacazam')
+
+    a
+    Out[32]: {'a', 'b', 'c', 'd', 'r'}
+
+    a - b
+    Out[33]: {'b', 'd', 'r'}
+
+    a | b#a or b
+    Out[34]: {'a', 'b', 'c', 'd', 'l', 'm', 'r', 'z'}
+
+    a & b
+    Out[35]: {'a', 'c'}
+
+    a ^ b#対称差
+    Out[36]: {'b', 'd', 'l', 'm', 'r', 'z'}
+
+    a = {x for x in 'abracadabra' if x not in 'abc'}
+
+    a
+    Out[38]: {'d', 'r'}
+
+    tel = {'jack':4098, 'sape':4139}\
+    #辞書
+
+    tel['guido'] = 4127
+
+    tel
+    Out[41]: {'jack': 4098, 'sape': 4139, 'guido': 4127}
+
+    tel['jack']
+    Out[42]: 4098
+
+    del tel['sape']
+
+    tel['irv'] = 4127
+
+    tel
+    Out[45]: {'jack': 4098, 'guido': 4127, 'irv': 4127}
+
+    list(tel)
+    Out[46]: ['jack', 'guido', 'irv']
+
+    'guido' in tel
+    Out[47]: True
+
+    'jack' not in tel
+    Out[48]: False
+
+    dict([('sape',4139), ('guido', 4127), ('jack', 4098)])\
+    #dictはキーと値のペアのタプルを含むリストから辞書を作る
+    Out[49]: {'sape': 4139, 'guido': 4127, 'jack': 4098}
+
+    {x: x**2 for x in (2, 4, 6)}\
+    #辞書内包表現
+    Out[50]: {2: 4, 4: 16, 6: 36}
+
+    dict(sape=4139, guido=4127, jack = 4098)
+    Out[51]: {'sape': 4139, 'guido': 4127, 'jack': 4098}
+    
+    knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+
+    for k,v in knights.items():
+        print(k,v)
+        #itemメソッドを使うとキーと対応する値を同時に取り出す
+        
+    gallahad the pure
+    robin the brave
+    
+    for i,v in enumerate(['tic', 'tac', 'toe']):
+        print(i,v)
+        
+    0 tic
+    1 tac
+    2 toe
+
+    #要素とインデックスを同時に取り出す
+
+    questions = ['name', 'quest', 'favorite color']
+
+    answers = ['lancelot', 'the holy grail', 'blue']
+
+    for q,a in zip(questions, answers):
+        print('What is your {0}? It is {1}.'.format(q, a))
+        
+    What is your name? It is lancelot.
+    What is your quest? It is the holy grail.
+    What is your favorite color? It is blue.
+
+    #zipを使うと2つ以上のシーケンス型を同時にループできる
+
+    for i in reversed(range(1, 10, 2)):
+        print(i)
+        
+    9
+    7
+    5
+    3
+    1
+
+    basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+
+    for i in sorted(basket):
+        print(i)
+        
+    apple
+    apple
+    banana
+    orange
+    orange
+    pear
+
+    basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+
+    for f in sorted(set(basket)):
+        print(f)
+        
+    apple
+    banana
+    orange
+    pear
+
+    import math
+
+    raw_data = [56.2, float('NaN'), 51.7, 55.3, 52.5, float('NaN'), 47.8]
+
+    filtered_data = []
+    
+    for value in raw_data:
+        if not math.isnan(value):
+            filtered_data.append(value)
+            
+
+    filtered_data
+    Out[17]: [56.2, 51.7, 55.3, 52.5, 47.8]
+
+    string1, string2, string3 = '', 'Trondheim', 'Hammer Dance'
+
+    non_null = string1 or string2 or string3
+
+    non_null
+    Out[20]: 'Trondheim'
