@@ -1012,3 +1012,345 @@ fib(2000)
 
     non_null
     Out[20]: 'Trondheim'
+    
+
+
+    
+#4/4
+
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+    #printをwhileにそろえると結果が改行なしで出力される
+    
+
+def fib2(n):
+    result = []
+    a, b = 0, 1
+    while a < n:
+        result.append(a)
+        a, b = b, a+b
+    return result
+    #returnをwhileの方に揃えないと0
+    
+
+cd Desktop
+C:\Users\81906\Desktop
+
+cd intro_py
+C:\Users\81906\Desktop\intro_py
+
+import fibo
+
+fibo.fib(100)\
+#関数にアクセス
+0 1 1 2 3 5 8 13 21 34 55 89 
+
+fibo.fib2(100)
+Out[7]: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+fibo.__name__
+Out[8]: 'fibo'
+
+fib = fibo.fib
+
+fib(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 
+
+from fibo import fib, fib2
+
+fib(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 
+
+from fibo import *\
+#モジュールで定義されている名前を全てimport
+
+fib(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 
+
+import fibo as fib
+
+fib.fib(500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 
+
+from fib import fib as fibonacci
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_10400/1335766475.py", line 1, in <module>
+    from fib import fib as fibonacci
+
+ModuleNotFoundError: No module named 'fib'
+
+
+from fibo import fib as fibonacci
+
+fibonacci (500)
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 
+
+run -i fibo.py 50
+0 1 1 2 3 5 8 13 21 34 
+
+#IPythonのコマンドを使う
+
+import sys 
+
+sys.ps1 #1次プロンプトに表示する文字列
+Out[23]: 'In : '
+
+sys.ps2 #2次プロンプトに表示する文字列
+Out[24]: '...: '
+
+import fibo, sys
+
+dir(fibo)
+Out[26]: 
+['__builtins__',
+ '__cached__',
+ '__doc__',
+ '__file__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ 'fib',
+ 'fib2']
+
+a = [1, 2, 3, 4, 5]
+
+import fibo
+
+fib = fibo.fib
+
+dir() #定義してる名前を列挙
+Out[30]: 
+['In',
+ 'Out',
+ '_',
+ '_23',
+ '_24',
+ '_26',
+ '_7',
+ '_8',
+ '__',
+ '___',
+ '__builtin__',
+ '__builtins__',
+ '__doc__',
+ '__file__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '_dh',
+ '_i',
+ '_i1',
+ '_i10',
+ '_i11',
+ '_i12',
+ '_i13',
+ '_i14',
+ '_i15',
+ '_i16',
+ '_i17',
+ '_i18',
+ '_i19',
+ '_i2',
+ '_i20',
+ '_i21',
+ '_i22',
+ '_i23',
+ '_i24',
+ '_i25',
+ '_i26',
+ '_i27',
+ '_i28',
+ '_i29',
+ '_i3',
+ '_i30',
+ '_i4',
+ '_i5',
+ '_i6',
+ '_i7',
+ '_i8',
+ '_i9',
+ '_ih',
+ '_ii',
+ '_iii',
+ '_oh',
+ 'a',
+ 'exit',
+ 'fib',
+ 'fib2',
+ 'fibo',
+ 'fibonacci',
+ 'get_ipython',
+ 'quit',
+ 'sys']
+
+import builtins
+
+dir(builtins) #組み込みの関数や変数をリストするにはbuiltins
+Out[32]: 
+['ArithmeticError',
+ 'AssertionError',
+ 'AttributeError',
+ 'BaseException',
+ 'BlockingIOError',
+ 'BrokenPipeError',
+ 'BufferError',
+ 'BytesWarning',
+ 'ChildProcessError',
+ 'ConnectionAbortedError',
+ 'ConnectionError',
+ 'ConnectionRefusedError',
+ 'ConnectionResetError',
+ 'DeprecationWarning',
+ 'EOFError',
+ 'Ellipsis',
+ 'EnvironmentError',
+ 'Exception',
+ 'False',
+ 'FileExistsError',
+ 'FileNotFoundError',
+ 'FloatingPointError',
+ 'FutureWarning',
+ 'GeneratorExit',
+ 'IOError',
+ 'ImportError',
+ 'ImportWarning',
+ 'IndentationError',
+ 'IndexError',
+ 'InterruptedError',
+ 'IsADirectoryError',
+ 'KeyError',
+ 'KeyboardInterrupt',
+ 'LookupError',
+ 'MemoryError',
+ 'ModuleNotFoundError',
+ 'NameError',
+ 'None',
+ 'NotADirectoryError',
+ 'NotImplemented',
+ 'NotImplementedError',
+ 'OSError',
+ 'OverflowError',
+ 'PendingDeprecationWarning',
+ 'PermissionError',
+ 'ProcessLookupError',
+ 'RecursionError',
+ 'ReferenceError',
+ 'ResourceWarning',
+ 'RuntimeError',
+ 'RuntimeWarning',
+ 'StopAsyncIteration',
+ 'StopIteration',
+ 'SyntaxError',
+ 'SyntaxWarning',
+ 'SystemError',
+ 'SystemExit',
+ 'TabError',
+ 'TimeoutError',
+ 'True',
+ 'TypeError',
+ 'UnboundLocalError',
+ 'UnicodeDecodeError',
+ 'UnicodeEncodeError',
+ 'UnicodeError',
+ 'UnicodeTranslateError',
+ 'UnicodeWarning',
+ 'UserWarning',
+ 'ValueError',
+ 'Warning',
+ 'WindowsError',
+ 'ZeroDivisionError',
+ '__IPYTHON__',
+ '__build_class__',
+ '__debug__',
+ '__doc__',
+ '__import__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ 'abs',
+ 'all',
+ 'any',
+ 'ascii',
+ 'bin',
+ 'bool',
+ 'breakpoint',
+ 'bytearray',
+ 'bytes',
+ 'callable',
+ 'cell_count',
+ 'chr',
+ 'classmethod',
+ 'compile',
+ 'complex',
+ 'copyright',
+ 'credits',
+ 'debugcell',
+ 'debugfile',
+ 'delattr',
+ 'dict',
+ 'dir',
+ 'display',
+ 'divmod',
+ 'enumerate',
+ 'eval',
+ 'exec',
+ 'execfile',
+ 'filter',
+ 'float',
+ 'format',
+ 'frozenset',
+ 'get_ipython',
+ 'getattr',
+ 'globals',
+ 'hasattr',
+ 'hash',
+ 'help',
+ 'hex',
+ 'id',
+ 'input',
+ 'int',
+ 'isinstance',
+ 'issubclass',
+ 'iter',
+ 'len',
+ 'license',
+ 'list',
+ 'locals',
+ 'map',
+ 'max',
+ 'memoryview',
+ 'min',
+ 'next',
+ 'object',
+ 'oct',
+ 'open',
+ 'ord',
+ 'pow',
+ 'print',
+ 'property',
+ 'range',
+ 'repr',
+ 'reversed',
+ 'round',
+ 'runcell',
+ 'runfile',
+ 'set',
+ 'setattr',
+ 'slice',
+ 'sorted',
+ 'staticmethod',
+ 'str',
+ 'sum',
+ 'super',
+ 'tuple',
+ 'type',
+ 'vars',
+ 'zip']
