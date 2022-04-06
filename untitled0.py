@@ -1354,3 +1354,156 @@ Out[32]:
  'type',
  'vars',
  'zip']
+
+
+
+#4/5
+
+year = 2016
+
+event = 'Referendum'
+
+f'Result of the {year} {event}'\
+#{}の中にpythonの式を書ける
+Out[3]: 'Result of the 2016 Referendum'
+
+yes_votes = 42_572_654
+
+no_votes = 43_132_495
+
+percentage = yes_votes / (yes_votes + no_votes)
+
+'{:-9} YES votes {:2.2%}'.format(yes_votes, percentage)\
+#{index:最小幅, .小数点以下の桁数 型}
+Out[7]: ' 42572654 YES votes 49.67%'
+
+s = 'Hello, world.'
+
+str(s)
+Out[9]: 'Hello, world.'
+
+repr(s)
+Out[10]: "'Hello, world.'"
+
+str(1/7)
+Out[11]: '0.14285714285714285'
+
+x = 10 * 3.25
+
+y = 200 * 200
+
+s = 'The value of x is ' + repr(x) + ', and y is ' + repr(y) + '...'
+
+print(s)
+The value of x is 32.5, and y is 40000...
+
+hello = 'hello, world\n'
+
+hellos = repr(hello)
+
+print(hellos)
+'hello, world\n'
+
+repr(hello)
+Out[19]: "'hello, world\\n'"
+
+repr((x, y, ('spam', 'eggs')))\
+#reprはpython objectでもいい
+Out[20]: "(32.5, 40000, ('spam', 'eggs'))"
+
+import math
+
+print(f'The valueof pi is apporoximately {math.pi:.3f}.')
+The valueof pi is apporoximately 3.142.
+
+table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
+
+for name, phone in table.items():
+    print(f'{name:10} ==> {phone:10d}')
+    #:の後ろに整数を着けると最小幅を指定できる
+    
+Sjoerd     ==>       4127
+Jack       ==>       4098
+Dcab       ==>       7678
+
+animals = 'eels'
+
+print(f'My hovecraft is full of {animals}.')
+My hovecraft is full of eels.
+
+print(f'My hovecraft is full of {animals!r}.')\
+#書式指定ミニ言語仕様　'!a' は ascii() を、 '!s' は str() を、 '!r' は repr() を適用
+My hovecraft is full of 'eels'.
+
+print('We are the {} who say "{}"!'.format('knights', 'Ni'))
+We are the knights who say "Ni"!
+
+print('{0} and {1}'.format('spam', 'eggs'))
+spam and eggs
+
+print('{1} and {0}'.format('spam', 'eggs'))
+eggs and spam
+
+print('This {food} is {adjective}.'.format(food='spam', adjective= 'absolutely horrible'))
+This spam is absolutely horrible.
+
+print('The story of {0}, {1}, and {other}.'.format('Bill', 'Manfred', other = 'Georg'))
+The story of Bill, Manfred, and Georg.
+
+table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
+
+print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]:d}; '\
+'Dcab: {0[Dcab]:d}'.format(table))
+Jack: 4098; Sjoerd: 4127; Dcab: 8637678
+
+print('Jack: {Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'\
+.format(**table))\
+#キーワード引数として渡す
+Jack: 4098; Sjoerd: 4127; Dcab: 8637678
+
+for x in range (1, 11):
+    print('{0:2d} {1:3d} {2:4d}'.format(x, x*x, x*x*x))
+    
+ 1   1    1
+ 2   4    8
+ 3   9   27
+ 4  16   64
+ 5  25  125
+ 6  36  216
+ 7  49  343
+ 8  64  512
+ 9  81  729
+10 100 1000
+
+for x in range(1,11):
+    print(repr(x).rjust(2), repr(x*x).rjust(3)\
+    , end = ' ')
+    print(repr(x*x*x).rjust(4))
+    
+ 1   1    1
+ 2   4    8
+ 3   9   27
+ 4  16   64
+ 5  25  125
+ 6  36  216
+ 7  49  343
+ 8  64  512
+ 9  81  729
+10 100 1000
+
+'12'.zfill(5)\
+#数値文字の左側をゼロ詰め
+Out[38]: '00012'
+
+'-3.14'.zfill(7)
+Out[39]: '-003.14'
+
+'3.14159265359'.zfill(5)\
+#長すぎるとそのまま返す
+Out[40]: '3.14159265359'
+
+import math
+
+print('The value of pi is apporoximately %5.3f.'% math.pi)\
+#%最小幅.小数点以下の桁数だと思う
+The value of pi is apporoximately 3.142.
