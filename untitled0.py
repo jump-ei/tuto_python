@@ -1507,3 +1507,51 @@ import math
 print('The value of pi is apporoximately %5.3f.'% math.pi)\
 #%最小幅.小数点以下の桁数だと思う
 The value of pi is apporoximately 3.142.
+
+#4/6
+
+
+
+with open('workfile.txt') as f:
+...     read_data = f.read()
+    
+
+f.closed
+Out[2]: True
+
+f = open('workfile.txt', 'rb+')
+
+f.read()
+Out[4]: b"0123456789abcdefer', 42)"
+
+f.read()
+Out[5]: b''
+
+f.readline()
+Out[6]: b''
+
+for line in f:
+...     print(line, end='')
+...
+
+
+f.write('This is a test\n')
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_4152/1403935874.py", line 1, in <module>
+    f.write('This is a test\n')
+
+TypeError: a bytes-like object is required, not 'str'
+
+
+f.write(b'0123456789abcdef')
+Out[9]: 16
+
+f.seek(5)
+Out[10]: 5
+
+f.read(1)
+Out[11]: b'5'
+
+f.seek(-3, 2)  # Go to the 3rd byte before the end
+Out[12]: 37
