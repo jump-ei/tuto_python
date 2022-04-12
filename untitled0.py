@@ -1627,3 +1627,193 @@ for arg in sys.argv[1:]:
         print(arg, 'has', len(f.readlines()), 'lines')
         f.close()
         
+#4/12
+
+
+
+
+try:
+    raise Exception('spam', 'eggs')
+except Exception as inst :
+    print(type(inst))
+    print(inst.args)
+    print(inst)
+    x, y = inst.args
+    print('x =', x)
+    print('y =', y)
+    
+<class 'Exception'>
+('spam', 'eggs')
+('spam', 'eggs')
+x = spam
+y = eggs
+
+def this_fails():
+    x = 1/0
+    
+
+try:
+    this_fails()
+except ZeroDivisionError as err:
+    print('Handling run-time error:', err)
+    
+Handling run-time error: division by zero
+
+raise NameError('HiThere')
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/2916444848.py", line 1, in <module>
+    raise NameError('HiThere')
+
+NameError: HiThere
+
+
+raise ValueError
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/4096975414.py", line 1, in <module>
+    raise ValueError
+
+ValueError
+
+
+try:
+    raise NameError('HiThere')
+except NameError:
+    print('An exception flew by!')
+    raise
+    
+An exception flew by!
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/2944242524.py", line 2, in <module>
+    raise NameError('HiThere')
+
+NameError: HiThere
+
+
+try:
+    func()
+except IOError as exc:
+    raise RuntimeError('Failed to open database') from exc
+    
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/2595672660.py", line 2, in <module>
+    func()
+
+NameError: name 'func' is not defined
+
+
+try:
+    open('database.sqlite')
+except IOError:
+    raise RuntimeError from None
+    
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/3743937424.py", line 4, in <module>
+    raise RuntimeError from None
+
+RuntimeError
+
+
+class Error(Exception):
+    """Base class for exception in this module."""
+    pass
+    
+
+class InputError(Error):
+    """Exception raised for errors in the input.
+
+    Attributes
+     expression -- input expression in which the error occured message -- explanation of the error
+     """
+     
+
+def __init__(self, expression, messgae):
+    self.expression = expression
+    self.message = message
+    
+
+class TransitionError(Error):
+    """Raised when an operation attempts a state transition that's not allowed.
+    Attributes.
+    previous -- state at beginning of transition
+    next -- attempted new state
+    message -- explanation of why the specific transition is not allowed
+    """
+    
+
+def __init__(self, previous, next, message):
+    self.previous = previous
+    self.next = next
+    self.message = message
+    
+
+try:
+    raise KeyboardInterrupt
+finally:
+    print('Goodbye, world!')
+    
+Goodbye, world!
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/244568380.py", line 2, in <module>
+    raise KeyboardInterrupt
+
+KeyboardInterrupt
+
+
+def bool_return():
+    try:
+        return True
+    finally:
+        return False
+        
+
+bool_return()
+Out[16]: False
+
+def divide(x, y):
+    try:
+        result = x/y
+    except ZeroDivisionError:
+        print("division by by zero!")
+    else:
+        print("result is", result)
+    finally:
+        print("executing finally clause")
+        
+
+divide(2, 1)
+result is 2.0
+executing finally clause
+
+divide(2, 0)
+division by by zero!
+executing finally clause
+
+divide("2", "1")
+executing finally clause
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/1759864827.py", line 1, in <module>
+    divide("2", "1")
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_31072/1529053164.py", line 3, in divide
+    result = x/y
+
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+
+
+for line in open("workfile.txt"):
+    print(line, end="")
+    
+aiueokaki0123456789abcdef123456789abcdef
+
+with open("workfile.txt") as f:
+    for line in f:
+        print(line, end="")
+        
+aiueokaki0123456789abcdef123456789abcdef
