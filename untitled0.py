@@ -1984,3 +1984,129 @@ class Bag:
     def addtwice(self, x):
         self.add(x)
         self.add(x)
+
+#4/18
+
+
+
+
+class Mapping:
+    def __init__(self, iterable):
+        self.items_list = []
+        self.__update(iterable)
+        
+    def update(self, iterable):
+        for item in iterable:
+            self.items_list_list.append(item)
+            
+    __update = update
+
+class MappingSubclass(Mapping):
+    
+    def update(self, keys, values):
+        for item in zip(keys, values):
+            self.items_list.append(item)
+
+class Employee:
+    pass
+
+john = Employee()
+
+john.name = 'John Doe'
+john.dept = 'computer lab'
+john.salary = 1000
+
+for element in [1, 2, 3]:
+    print(element)
+for element in (1, 2, 3):
+    print(element)
+for key in {'one':1, 'two':2}:
+    print(key)
+for char in "123":
+    print(char)
+for line in open("workfile.txt"):
+    print(line, end='')
+
+1
+2
+3
+1
+2
+3
+one
+two
+1
+2
+3
+0123456789abcd0123456789abcdefghiaiueokakiaiueokaki
+
+s = 'abc'
+it = iter(s)
+it
+
+Out[7]: <str_iterator at 0x1c0b7e10e50>
+
+next(it)
+Out[8]: 'a'
+
+next(it)
+Out[9]: 'b'
+
+next(it)
+Out[10]: 'c'
+
+next(it)
+Traceback (most recent call last):
+
+  File "C:\Users\81906\AppData\Local\Temp/ipykernel_1172/600241529.py", line 1, in <module>
+    next(it)
+    
+class Reverse:
+    """Iterator for looping over a sequence backwards."""
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+        
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.index == 0:
+            raise StopIteration
+        self.index = self.index - 1
+        return self.data[self.index]
+    
+rev = Reverse('spam')
+
+iter(rev)
+Out[14]: <__main__.Reverse at 0x1c0b6b63e20>
+
+for char in rev:
+    print(char)
+    
+m
+a
+p
+s
+
+def reverse(data):
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
+        
+for char in reverse('golf'):
+    print(char)
+f
+l
+o
+g
+
+data = 'golf'
+
+list(data[i] for i in range(len(data)-1, -1, -1))
+Out[25]: ['f', 'l', 'o', 'g']
+
+import sys
+
+print(sys.argv)
+['']
+
