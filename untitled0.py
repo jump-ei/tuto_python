@@ -1817,3 +1817,170 @@ with open("workfile.txt") as f:
         print(line, end="")
         
 aiueokaki0123456789abcdef123456789abcdef
+
+#4/13
+
+
+
+def scope_test():
+    def do_local():
+        spam = "local spam"
+        
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+        
+    def do_global():
+        global spam
+        spam = "global spam"
+        
+    spam = "test spam"
+    do_local()
+    print("After local assignment", spam)
+    do_nonlocal()
+    print("After nonlocal assignment", spam)
+    do_global()
+    print("After global assignment", spam)
+    
+scope_test()
+print("In global scope", spam)
+
+After local assignment test spam
+After nonlocal assignment nonlocal spam
+After global assignment nonlocal spam
+In global scope global spam
+
+#nonglobal spamだとspamが変更される
+
+class MyClass:
+    """A simple example class"""
+    i = 12345
+    
+    def f(self):
+        return 'hello world'
+    
+    def __init__(self):
+        self.data = []
+
+class Complex:
+    def __init__(self, realpart, imagpart):
+        self.r = realpart
+        self.i = imagpart
+        
+
+x = Complex(3.0, -4.5)
+
+x.r, x.i
+Out[19]: (3.0, -4.5)
+
+x.counter = 1
+while x.counter < 10:
+    x.counter = x.counter * 2
+print(x.counter)
+del x.counter
+16
+
+class Dog:
+    
+    kind = 'canine'
+    
+    def __init__(self, name):
+        self.name = name
+
+d = Dog('Fido')
+
+e = Dog('Buddy')
+
+d.kind
+Out[26]: 'canine'
+
+e.kind
+Out[27]: 'canine'
+
+d.name
+Out[28]: 'Fido'
+
+e.name
+Out[29]: 'Buddy'
+
+class Dog:
+    
+    tricks = []
+    
+    def __init__(self, name):
+        self.name = name
+        
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+ 
+d = Dog('Fibo')
+
+e = Dog('Buddy')
+
+d.add_trick('roll over')
+
+e.add_trick('play dead')
+
+d.tricks
+Out[35]: ['roll over', 'play dead']
+
+class Dog:
+    
+    def __init__(self, name):
+        self.name = name
+        self.tricks = []
+        
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+
+d = Dog('Fido')
+
+e = Dog('Buddy')
+
+d.add_trick('roll over')
+
+e.add_trick('play dead')
+
+d.tricks
+Out[42]: ['roll over']
+
+e.tricks
+Out[43]: ['play dead']
+
+class Warehouse:
+    purpose = 'storage'
+    region = 'west'
+    
+w1 = Warehouse()
+
+print(w1.purpose, w1.region)
+storage west
+
+w2 = Warehouse()
+
+w2.region = 'east'
+
+print(w2.purpose, w2.region)
+storage east
+
+def f1(self, x, y):
+    return min(x, x+y)
+
+class C:
+    f = f1
+    
+    def g(self):
+        return 'hello world'
+    
+    h = g
+    
+class Bag:
+    def __init__(self):
+        self.data = []
+        
+    def add(self, x):
+        self.data.append(x)
+        
+    def addtwice(self, x):
+        self.add(x)
+        self.add(x)
